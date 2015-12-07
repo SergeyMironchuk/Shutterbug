@@ -13,6 +13,7 @@
 @property (nonatomic, strong) UIImage *image;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicator;
+@property (nonatomic) BOOL hideMaster;
 
 @end
 
@@ -84,6 +85,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.splitViewController.delegate = self;
+    self.hideMaster = NO;
 }
 
 - (void)viewDidLoad {
@@ -114,7 +116,8 @@
 - (BOOL)splitViewController:(UISplitViewController *)svc
    shouldHideViewController:(UIViewController *)vc
               inOrientation:(UIInterfaceOrientation)orientation {
-    return UIDeviceOrientationIsPortrait(orientation);
+    //self.hideMaster = !self.hideMaster;
+    return YES;// (UIDeviceOrientationIsPortrait(orientation) || UIDeviceOrientationIsLandscape(orientation)) || self.hideMaster;
 }
 
 

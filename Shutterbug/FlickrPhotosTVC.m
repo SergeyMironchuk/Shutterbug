@@ -73,6 +73,12 @@
             [self prepareViewController:detail toDisplayPhoto:self.photos[indexPath.row]];
         }
     }
+    [UIView animateWithDuration:0.5
+                     animations:^{
+                         self.splitViewController.preferredDisplayMode = UISplitViewControllerDisplayModePrimaryHidden;
+    }];
+    //[self.splitViewController.view setNeedsLayout];
+    //[self.splitViewController willRotateToInterfaceOrientation:[UIApplication sharedApplication].statusBarOrientation duration:0];
 }
 
 #pragma mark - Navigation
